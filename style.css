@@ -1,92 +1,77 @@
-*, *:after, *:before {
-    box-sizing: border-box;
-  }
-  
-  body {
-    text-align: center;
-    background: #eee;
-  }
-  
-  section {
-    float: left;
-    min-width: 150px;
-    width: 33.33%;
-    padding: 25px 0;
-    min-height: 100px;
-  }
-  
-  /*=====================*/
-  .bx-checkbox {
-    position: relative;
-    display: inline-block;
-  }
-  .bx-checkbox:after, .bx-checkbox:before {
-    font-family: FontAwesome;
-    font-feature-settings: normal;
-    -webkit-font-kerning: auto;
-            font-kerning: auto;
-    font-language-override: normal;
-    font-stretch: normal;
-    font-style: normal;
-    font-synthesis: weight style;
-    font-variant: normal;
-    font-weight: normal;
-    text-rendering: auto;
-  }
-  .bx-checkbox label {
-    width: 90px;
-    height: 42px;
-    background: #ccc;
-    position: relative;
-    display: inline-block;
-    border-radius: 46px;
-    transition: 0.5s;
-  }
-  .bx-checkbox label:after {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    left: 0;
-    top: -5px;
-    z-index: 2;
-    background: #fff;
-    transition: all 0.6s cubic-bezier(.7,-.4,.4,1.4);
-  }
-  .bx-checkbox input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    opacity: 0;
-    cursor: pointer;
-  }
+* {
+	margin: 0;
+	padding: 0;
+}
 
-  .bx-checkbox input:checked + label:after {
-    left: 40px;
-  }
-  
-  .bx-variant-1 .bx-checkbox label {
-    background: #D6E0FF;
-    height: 38px;
-  }
-  .bx-variant-1 .bx-checkbox label:after {
-    background: #fff;
-    top: 3px;
-    left: 5px;
-    width: 30px;
-    height: 30px;
-  }
+.menu {
+	width: 88px;
+	height: 88px;
+	margin: 100px auto;
+	position: relative;
+}
 
-  .bx-variant-1 .bx-checkbox input:checked + label {
-    background: #FF7E44;
-  }
+.menu #check {
+	position: absolute;
+	z-index: 1;
+	display: none;
+}
 
-  .bx-variant-1 .bx-checkbox input:checked + label:after {
-    background: #fff;
-    left: 55px;
-  }
-  
+.menu label {
+	width: 100%;
+	height: 100%;
+	background-color: #069;
+	position: absolute;
+	transition: all .3s linear;
+	cursor: pointer;
+}
+
+.menu span {
+	width: 60px;
+	height: 8px;
+	top: 40px;
+	left: 14px;
+	position: absolute;
+	background-color: #FFF;
+	transition: all .3s linear;
+	cursor: pointer;
+}
+
+.menu span:after {
+	content: '';
+	width: 60px;
+	height: 8px;
+	top: -20px;
+	position: absolute;
+	background-color: #FFF;
+	transition: all .3s linear;
+}
+
+/*
+.menu span:before {
+	content: '';
+	width: 60px;
+	height: 8px;
+	bottom: -20px;
+	position: absolute;
+	background-color: #FFF;
+	transition: all .3s linear;
+}
+*/
+
+.menu #check:checked ~ span {
+	/*background-color: transparent;*/
+	transform: translate(0, 20px) rotate(45deg);
+}
+
+.menu #check:checked ~ span:after {
+	/*transform: translate(0, 20px) rotate(45deg);*/
+	transform: translate(0, -20px) rotate(-45deg);
+}
+
+.menu #check:checked ~ span:before {
+	transform: translate(0, -20px) rotate(-45deg);
+}
+
+.menu #check:checked ~ label {
+	border-radius: 50%;
+}
